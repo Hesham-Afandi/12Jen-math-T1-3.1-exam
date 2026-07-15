@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ Grade 12 General Math - Lesson 3-1: Exponential Functions (12Jen-math-T1-3.1-exam)</title>
+    <title>🧮 امتحان الدوال الأسية (3-1)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=400;600;700;900&family=Inter:wght=400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; }
         body.en-mode { font-family: 'Inter', sans-serif; }
@@ -25,7 +25,7 @@
             position: fixed; top: 16px; left: 16px; z-index: 100;
             background: white; padding: 6px; border-radius: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: flex; gap: 4px;
-            border: 2px solid #0d9488;
+            border: 2px solid #e11d48;
         }
         [dir="ltr"] .lang-switch { left: auto; right: 16px; }
         .lang-btn {
@@ -33,8 +33,8 @@
             transition: all 0.3s; border: none; font-size: 0.875rem;
             background: transparent; color: #6b7280;
         }
-        .lang-btn.active { background: #0d9488; color: white; box-shadow: 0 2px 6px rgba(13,148,136,0.4); }
-        .lang-btn:hover:not(.active) { background: #f0fdfa; color: #0d9488; }
+        .lang-btn.active { background: #e11d48; color: white; box-shadow: 0 2px 6px rgba(225,29,72,0.4); }
+        .lang-btn:hover:not(.active) { background: #fff1f2; color: #e11d48; }
         .shuffle-badge {
             display: inline-block;
             background: linear-gradient(135deg, #f59e0b, #ef4444);
@@ -47,7 +47,7 @@
             animation: pulse 2s infinite;
         }
     </style>
-<script src="/_aistudio-iframe.js"></script></head>
+</head>
 <body class="bg-gray-50 text-gray-800 p-4 md:p-8 min-h-screen">
 
     <div class="lang-switch no-print">
@@ -56,24 +56,24 @@
     </div>
 
     <div id="timer-container" class="max-w-4xl mx-auto mb-4 text-center no-print">
-        <div class="bg-white p-4 rounded-xl shadow-md inline-block border-2 border-teal-100">
+        <div class="bg-white p-4 rounded-xl shadow-md inline-block border-2 border-rose-100">
             <span class="text-gray-600 ml-2" data-ar="⏱️ الوقت المتبقي:" data-en="⏱️ Time Remaining:">⏱️ الوقت المتبقي:</span>
-            <span id="timer" class="text-2xl font-bold text-teal-600 font-mono">60:00</span>
+            <span id="timer" class="text-2xl font-bold text-rose-600 font-mono">60:00</span>
             <span class="shuffle-badge" data-ar="🔀 أسئلة عشوائية" data-en="🔀 Random Questions">🔀 أسئلة عشوائية</span>
         </div>
     </div>
 
     <div class="max-w-4xl mx-auto mb-6 flex flex-wrap gap-3 justify-center no-print">
-        <button onclick="toggleAnswers()" class="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="👁️ إظهار / إخفاء الإجابات" data-en="👁️ Show / Hide Answers">👁️ إظهار / إخفاء الإجابات</button>
+        <button onclick="toggleAnswers()" class="bg-rose-600 hover:bg-rose-700 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="👁️ إظهار / إخفاء الإجابات" data-en="👁️ Show / Hide Answers">👁️ إظهار / إخفاء الإجابات</button>
         <button onclick="window.print()" class="bg-gray-800 hover:bg-gray-900 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="🖨️ طباعة / PDF" data-en="🖨️ Print / PDF">🖨️ طباعة / PDF</button>
-        <button onclick="reshuffleExam()" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="🔀 إعادة خلط الأسئلة" data-en="🔀 Reshuffle Questions">🔀 إعادة خلط الأسئلة</button>
+        <button onclick="reshuffleExam()" class="bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="🔀 إعادة خلط الأسئلة" data-en="🔀 Reshuffle Questions">🔀 إعادة خلط الأسئلة</button>
     </div>
 
-    <header class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md mb-8 border-r-4 border-teal-600">
+    <header class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md mb-8 border-r-4 border-rose-600">
         <div class="text-center">
-            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2" data-ar="⚡ رياضيات الصف الثاني عشر عام" data-en="⚡ Grade 12 General Mathematics">⚡ رياضيات الصف الثاني عشر عام</h1>
-            <h2 class="text-lg text-teal-600 font-semibold" data-ar="الدرس 3-1: الدوال الأسية (الفصل الدراسي الأول)" data-en="Lesson 3-1: Exponential Functions (Term 1)">الدرس 3-1: الدوال الأسية (الفصل الدراسي الأول)</h2>
-            <p class="text-sm text-gray-600 mt-2" data-ar="اختبار شامل يغطي الدوال الأسية للنمو والاضمحلال والأساس الطبيعي e وحساب الفائدة المركبة والمستمرة والنمذجة." data-en="Lesson 3-1: Exponential Functions complete interactive test aligned with Ministry syllabus.">اختبار شامل يغطي الدوال الأسية للنمو والاضمحلال والأساس الطبيعي e وحساب الفائدة المركبة والمستمرة والنمذجة.</p>
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2" data-ar="🧮 امتحان الدوال الأسية (3-1)" data-en="🧮 Exponential Functions (3-1) Exam">🧮 امتحان الدوال الأسية (3-1)</h1>
+            <h2 class="text-lg text-rose-600 font-semibold" data-ar="Exponential Functions (3-1)" data-en="Exponential Functions (3-1)">Exponential Functions (3-1)</h2>
+            <p class="text-sm text-gray-600 mt-2" data-ar="أسئلة تغطي: تعريف الدوال الأسية، التمثيل البياني، التحولات، النمو والتضاؤل الأسي، والتطبيقات الحياتية" data-en="Covers: Definition of Exponential Functions, Graphing, Transformations, Growth and Decay, and Real-Life Applications">أسئلة تغطي: تعريف الدوال الأسية، التمثيل البياني، التحولات، النمو والتضاؤل الأسي، والتطبيقات الحياتية</p>
             <p class="text-xs text-orange-600 mt-2 font-semibold" data-ar="⚠️ ملاحظة: يتم خلط ترتيب الأسئلة والخيارات تلقائياً مع كل تحديث للصفحة" data-en="⚠️ Note: Questions and options are randomly shuffled on every page refresh">⚠️ ملاحظة: يتم خلط ترتيب الأسئلة والخيارات تلقائياً مع كل تحديث للصفحة</p>
         </div>
         <div class="mt-4 flex flex-wrap justify-center gap-4 text-sm text-gray-600">
@@ -81,7 +81,7 @@
             <span><span data-ar="👤 الاسم:" data-en="👤 Name:">👤 الاسم:</span> <input type="text" id="studentName" class="border-b border-gray-400 bg-transparent w-32 text-center" placeholder="Enter name"></span>
             <span><span data-ar="🏫 الشعبة:" data-en="🏫 Class:">🏫 الشعبة:</span> <input type="text" id="studentClass" class="border-b border-gray-400 bg-transparent w-28 text-center" placeholder="Class"></span>
             <span><span data-ar="⏱️ المدة: 60 دقيقة" data-en="⏱️ Duration: 60 min">⏱️ المدة: 60 دقيقة</span></span>
-            <span><span data-ar="📊 המجموع: 100 درجة" data-en="📊 Total: 100 pts">📊 المجموع: 100 درجة</span></span>
+            <span><span data-ar="📊 المجموع: 100 درجة" data-en="📊 Total: 100 pts">📊 المجموع: 100 درجة</span></span>
         </div>
     </header>
 
@@ -94,7 +94,7 @@
     <div id="results-panel" class="max-w-4xl mx-auto mt-8 bg-white p-8 rounded-2xl shadow-2xl border-t-4 border-emerald-500 hidden no-print">
         <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center" data-ar="📊 نتائج الامتحان" data-en="📊 Exam Results">📊 نتائج الامتحان</h2>
         <div class="grid md:grid-cols-3 gap-4 mb-6">
-            <div class="bg-blue-50 p-4 rounded-xl text-center"><p data-ar="اسم الطالب" data-en="Student Name">اسم الطالب</p><p id="res-name" class="font-bold text-xl text-teal-700">-</p></div>
+            <div class="bg-blue-50 p-4 rounded-xl text-center"><p data-ar="اسم الطالب" data-en="Student Name">اسم الطالب</p><p id="res-name" class="font-bold text-xl text-rose-700">-</p></div>
             <div class="bg-purple-50 p-4 rounded-xl text-center"><p data-ar="التاريخ" data-en="Date">التاريخ</p><p id="res-date" class="font-bold text-xl text-purple-700">-</p></div>
             <div class="bg-emerald-50 p-4 rounded-xl text-center"><p data-ar="المجموع" data-en="Score">المجموع</p><p id="res-total" class="font-bold text-3xl text-emerald-600">0 / 100</p></div>
         </div>
@@ -107,29 +107,29 @@
             <h3 class="font-bold text-lg mb-4 text-gray-800" data-ar="📈 تفصيل الأداء حسب القسم:" data-en="📈 Performance Breakdown:">📈 تفصيل الأداء حسب القسم:</h3>
             <div class="space-y-3">
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الأول: المفاهيم والقواعد الأساسية والتعريفات" data-en="Part 1: Basic Concepts, Rules, and Definitions">الجزء الأول: المفاهيم والقواعد الأساسية والتعريفات</span>
-                    <span id="sec1-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="تعريف الدوال الأسية" data-en="Definition of Exponential Functions">تعريف الدوال الأسية</span>
+                    <span id="sec1-score" class="font-bold text-rose-600">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الثاني: العمليات الحسابية والحلول العددية الدقيقة" data-en="Part 2: Calculations and Exact Numerical Solutions">الجزء الثاني: العمليات الحسابية والحلول العددية الدقيقة</span>
-                    <span id="sec2-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="التمثيل البياني للدوال الأسية" data-en="Graphing Exponential Functions">التمثيل البياني للدوال الأسية</span>
+                    <span id="sec2-score" class="font-bold text-rose-600">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الثالث: المهارات المتقدمة والتطبيقات والمسائل" data-en="Part 3: Advanced Skills, Applications, and Problems">الجزء الثالث: المهارات المتقدمة والتطبيقات والمسائل</span>
-                    <span id="sec3-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="التحولات في الدوال الأسية" data-en="Transformations of Exponential Functions">التحولات في الدوال الأسية</span>
+                    <span id="sec3-score" class="font-bold text-rose-600">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الرابع: النمذجة الرياضية والتمثيل البياني والمسائل العملية" data-en="Part 4: Mathematical Modeling, Graphing, and Practical Problems">الجزء الرابع: النمذجة الرياضية والتمثيل البياني والمسائل العملية</span>
-                    <span id="sec4-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="النمو والتضاؤل الأسي" data-en="Exponential Growth and Decay">النمو والتضاؤل الأسي</span>
+                    <span id="sec4-score" class="font-bold text-rose-600">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الخامس: مهارات التفكير العليا والتحليل والربط المنطقي" data-en="Part 5: Higher-Order Thinking, Analysis, and Logical Connections">الجزء الخامس: مهارات التفكير العليا والتحليل والربط المنطقي</span>
-                    <span id="sec5-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="التطبيقات الحياتية" data-en="Real-Life Applications">التطبيقات الحياتية</span>
+                    <span id="sec5-score" class="font-bold text-rose-600">0/4</span>
                 </div>
             </div>
         </div>
         <div class="text-center mb-6">
-            <button id="sendEmailBtn" onclick="sendResultsToEmail()" class="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white text-lg px-8 py-3 rounded-xl font-bold shadow-xl transition transform hover:scale-105 cursor-pointer" data-ar="📧 إرسال النتائج للمعلم" data-en="📧 Send Results to Teacher">📧 إرسال النتائج للمعلم</button>
+            <button id="sendEmailBtn" onclick="sendResultsToEmail()" class="bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white text-lg px-8 py-3 rounded-xl font-bold shadow-xl transition transform hover:scale-105 cursor-pointer" data-ar="📧 إرسال النتائج للمعلم" data-en="📧 Send Results to Teacher">📧 إرسال النتائج للمعلم</button>
             <p id="emailStatus" class="text-sm mt-2 text-center font-medium"></p>
         </div>
         <div class="flex gap-3 justify-center">
@@ -138,10 +138,11 @@
     </div>
 
     <footer class="max-w-4xl mx-auto mt-10 mb-8 text-center text-gray-500 text-sm no-print">
-        © <span data-ar="رياضيات الصف 12 عام | الدرس 3-1: الدوال الأسية" data-en="Grade 12 General Math | Lesson 3-1: Exponential Functions">رياضيات الصف 12 عام | الدرس 3-1: الدوال الأسية</span> | Platform 4U Education
+        © <span data-ar="الدوال الأسية (3-1)" data-en="Exponential Functions (3-1)">الدوال الأسية (3-1)</span> | Mr. Mohammed Hesham
     </footer>
 
 <script>
+// ==================== EmailJS Settings ====================
 const PUBLIC_KEY = "Rb3Lq8tXaFmc5YHUH";
 const SERVICE_ID = "service_w15m64i";
 const TEMPLATE_ID = "template_5b0u2tq";
@@ -150,627 +151,254 @@ const TARGET_EMAIL = "mohammedhesham872@gmail.com";
 emailjs.init(PUBLIC_KEY);
 
 const originalExamData = {
-    "title_ar": "الدرس 3-1: الدوال الأسية",
-    "title_en": "Lesson 3-1: Exponential Functions",
-    "desc_ar": "اختبار شامل يغطي الدوال الأسية للنمو والاضمحلال والأساس الطبيعي e وحساب الفائدة المركبة والمستمرة والنمذجة.",
-    "sections": [
+    sections: [
         {
-            "title": {
-                "ar": "🔹 الجزء الأول: الدوال الأسية العامة وخصائص نموها واضمحلالها بيانيا وجبريا",
-                "en": "🔹 Part 1: الدوال الأسية العامة وخصائص نموها واضمحلالها بيانيا وجبريا"
-            },
-            "questions": [
+            id: 'sec1',
+            title: { ar: '🔹 الجزء الأول: تعريف الدوال الأسية', en: '🔹 Part 1: Definition of Exponential Functions' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "ما المفهوم الأساسي المرتبط بـ الدوال الأسية العامة وخصائص نموها واضمحلالها بيانيا وجبريا؟",
-                        "en": "What is the basic concept associated with الدوال الأسية العامة وخصائص نموها واضمحلالها بيانيا وجبريا?"
-                    },
-                    "options": [
-                        {
-                            "ar": "العلاقة الرياضية الصحيحة والتمثيل الإحداثي الدقيق",
-                            "en": "The correct mathematical relation and accurate coordinate mapping"
-                        },
-                        {
-                            "ar": "حساب المعدلات الخطية للبيانات المستمرة فقط",
-                            "en": "Calculating linear rates for continuous data only"
-                        },
-                        {
-                            "ar": "تحليل القيم المطلقة واستبعاد الحلول التخيلية",
-                            "en": "Analyzing absolute values and excluding imaginary solutions"
-                        },
-                        {
-                            "ar": "دراسة سلوك طرفي الدالة عند اللانهاية دائماً",
-                            "en": "Studying the end behavior of a function at infinity always"
-                        }
+                    q: { ar: 'ما تعريف الدالة الأسية؟', en: 'What is the definition of an exponential function?' },
+                    options: [
+                        { ar: 'دالة يمكن كتابتها بالصيغة f(x) = ab^x حيث a و b ثابتان حقيقيان، b > 0، b ≠ 1، و x أي عدد حقيقي.', en: 'A function that can be written in the form f(x) = ab^x where a and b are real constants, b > 0, b ≠ 1, and x is any real number.' },
+                        { ar: 'دالة يمكن كتابتها بالصيغة f(x) = x^a حيث a ثابت حقيقي.', en: 'A function that can be written in the form f(x) = x^a where a is a real constant.' },
+                        { ar: 'دالة يمكن كتابتها بالصيغة f(x) = log_b(x) حيث b ثابت حقيقي.', en: 'A function that can be written in the form f(x) = log_b(x) where b is a real constant.' },
+                        { ar: 'دالة يمكن كتابتها بالصيغة f(x) = √x حيث x عدد غير سالب.', en: 'A function that can be written in the form f(x) = √x where x is a non-negative number.' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "المفهوم الأساسي يرتكز دائماً على إدراك القوانين الأساسية للعلاقات والدوال.",
-                        "en": "The basic concept always relies on understanding the core laws of relations and functions."
-                    }
+                    correct: 0,
+                    answer: { ar: 'الدالة الأسية هي دالة يمكن كتابتها بالصيغة f(x) = ab^x حيث a و b ثابتان حقيقيان، b > 0، b ≠ 1، و x أي عدد حقيقي.', en: 'An exponential function is a function that can be written in the form f(x) = ab^x where a and b are real constants, b > 0, b ≠ 1, and x is any real number.' }
                 },
                 {
-                    "q": {
-                        "ar": "أي مما يلي يعبر بدقة عن إحدى القواعد الأساسية لـ الدوال الأسية العامة وخصائص نموها واضمحلالها بيانيا وجبريا؟",
-                        "en": "Which of the following accurately expresses a basic rule for الدوال الأسية العامة وخصائص نموها واضمحلالها بيانيا وجبريا?"
-                    },
-                    "options": [
-                        {
-                            "ar": "القاعدة الأساسية التي تضمن الحصول على مخرجات وحيدة لكل مدخل حقيقي",
-                            "en": "The basic rule that ensures obtaining a unique output for each real input"
-                        },
-                        {
-                            "ar": "القاعدة التي تنفي تماماً ارتباط المتغيرات ذات الأسس الفردية",
-                            "en": "The rule that completely negates mapping variables with odd exponents"
-                        },
-                        {
-                            "ar": "القاعدة التي تقيد المجال للأعداد النسبية فقط",
-                            "en": "The rule that restricts the domain to rational numbers only"
-                        },
-                        {
-                            "ar": "قاعدة المساواة الصفرية لجميع المقادير الجبرية",
-                            "en": "The zero-equality rule for all algebraic expressions"
-                        }
+                    q: { ar: 'ما مجال الدالة الأسية f(x) = 2^x؟', en: 'What is the domain of the exponential function f(x) = 2^x?' },
+                    options: [
+                        { ar: 'جميع الأعداد الحقيقية', en: 'All real numbers' },
+                        { ar: 'x > 0', en: 'x > 0' },
+                        { ar: 'x < 0', en: 'x < 0' },
+                        { ar: 'x ≥ 0', en: 'x ≥ 0' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تضمن القواعد الرياضية سلامة العلاقات وصحة المخرجات من مدخلاتها.",
-                        "en": "Mathematical rules ensure the soundness of relations and validity of outputs from inputs."
-                    }
+                    correct: 0,
+                    answer: { ar: 'مجال الدالة الأسية f(x) = 2^x هو جميع الأعداد الحقيقية.', en: 'The domain of the exponential function f(x) = 2^x is all real numbers.' }
                 },
                 {
-                    "q": {
-                        "ar": "لماذا تعد دراسة الدوال الأسية العامة وخصائص نموها واضمحلالها بيانيا وجبريا خطوة ضرورية لحل المشكلات المتقدمة؟",
-                        "en": "Why is studying الدوال الأسية العامة وخصائص نموها واضمحلالها بيانيا وجبريا a necessary step for solving advanced problems?"
-                    },
-                    "options": [
-                        {
-                            "ar": "لأنها تضع الأساس المتين لفهم النماذج المعقدة وبناء الحلول البرمجية لها",
-                            "en": "Because it establishes the solid foundation for understanding complex models and coding their solutions"
-                        },
-                        {
-                            "ar": "لأنها تلغي الحاجة لاستخدام الحاسبات البيانية نهائياً",
-                            "en": "Because it completely eliminates the need for graphing calculators"
-                        },
-                        {
-                            "ar": "لأنها تعطي حلولاً تقريبية سريعة دون الحاجة للبرهان الجبري",
-                            "en": "Because it gives quick approximate solutions without algebraic proofs"
-                        },
-                        {
-                            "ar": "لأنها تفترض دائماً تماثل جميع الدوال الرياضية حركياً",
-                            "en": "Because it always assumes kinematics symmetry of all mathematical functions"
-                        }
+                    q: { ar: 'ما مدى الدالة الأسية f(x) = 2^x؟', en: 'What is the range of the exponential function f(x) = 2^x?' },
+                    options: [
+                        { ar: 'y > 0', en: 'y > 0' },
+                        { ar: 'جميع الأعداد الحقيقية', en: 'All real numbers' },
+                        { ar: 'y < 0', en: 'y < 0' },
+                        { ar: 'y ≥ 0', en: 'y ≥ 0' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الفهم المبدئي للقواعد يسهل فك وتبسيط المشاكل المركبة لاحقاً.",
-                        "en": "Initial understanding of rules facilitates unfolding and simplifying composite problems later."
-                    }
+                    correct: 0,
+                    answer: { ar: 'مدى الدالة الأسية f(x) = 2^x هو y > 0.', en: 'The range of the exponential function f(x) = 2^x is y > 0.' }
                 },
                 {
-                    "q": {
-                        "ar": "أي الرموز المصطلحية التالية ترتبط بـ الدوال الأسية العامة وخصائص نموها واضمحلالها بيانيا وجبريا بشكل مباشر؟",
-                        "en": "Which of the following terminology symbols is directly associated with الدوال الأسية العامة وخصائص نموها واضمحلالها بيانيا وجبريا?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الرموز المصطلحية المحددة لخصائص المجال والمدى والتقاربات",
-                            "en": "The specific terminology symbols defining domain, range, and asymptotes"
-                        },
-                        {
-                            "ar": "الرمز المعبر عن التغير اللحظي المتجه فقط",
-                            "en": "The symbol representing instantaneous vector change only"
-                        },
-                        {
-                            "ar": "الرمز المحدد لأصفار المقادير كثيرة الحدود الفردية",
-                            "en": "The symbol specifying zeros of odd polynomial expressions"
-                        },
-                        {
-                            "ar": "الرموز المصطلحية لتكامل وحساب المساحات السطحية",
-                            "en": "The terminology symbols for integration and surface area calculations"
-                        }
+                    q: { ar: 'ما خط التقارب الأفقي للدالة f(x) = 2^x؟', en: 'What is the horizontal asymptote of the function f(x) = 2^x?' },
+                    options: [
+                        { ar: 'y = 0', en: 'y = 0' },
+                        { ar: 'y = 1', en: 'y = 1' },
+                        { ar: 'x = 0', en: 'x = 0' },
+                        { ar: 'لا يوجد خط تقارب أفقي', en: 'No horizontal asymptote' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تستخدم الرموز الرياضية لتكثيف التعبير عن العلاقات المعقدة بوضوح.",
-                        "en": "Mathematical symbols are used to concisely express complex relations clearly."
-                    }
+                    correct: 0,
+                    answer: { ar: 'خط التقارب الأفقي للدالة f(x) = 2^x هو y = 0.', en: 'The horizontal asymptote of the function f(x) = 2^x is y = 0.' }
                 }
             ]
         },
         {
-            "title": {
-                "ar": "🔹 الجزء الثاني: الدالة الأسية الطبيعية ذات الأساس e (الرقم النيبيري)",
-                "en": "🔹 Part 2: الدالة الأسية الطبيعية ذات الأساس e (الرقم النيبيري)"
-            },
-            "questions": [
+            id: 'sec2',
+            title: { ar: '🔹 الجزء الثاني: التمثيل البياني للدوال الأسية', en: '🔹 Part 2: Graphing Exponential Functions' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "أوجد القيمة العددية الدقيقة للتعبير المرتبط بـ الدالة الأسية الطبيعية ذات الأساس e (الرقم النيبيري) عند التعويض بالقيم المرجعية؟",
-                        "en": "Find the exact numerical value of the expression associated with الدالة الأسية الطبيعية ذات الأساس e (الرقم النيبيري) upon reference substitution?"
-                    },
-                    "options": [
-                        {
-                            "ar": "القيمة العددية الدقيقة المحسوبة باتباع الترتيب الجبري الصارم للعمليات الحسابية",
-                            "en": "The exact numerical value calculated by following the strict algebraic order of operations"
-                        },
-                        {
-                            "ar": "قيمة تقريبية تقرب لأقرب جزء من عشرة آلاف",
-                            "en": "An approximate value rounded to the nearest ten-thousandth"
-                        },
-                        {
-                            "ar": "صفر دائم بسبب انعدام المقادير الفردية في المعادلة",
-                            "en": "Zero always due to the vanishing of odd expressions in the equation"
-                        },
-                        {
-                            "ar": "قيمة تخيلية تشتمل على المركب التخيلي المباشر i",
-                            "en": "An imaginary value comprising the direct imaginary unit i"
-                        }
+                    q: { ar: 'ما نقطة التقاطع مع المحور الرأسي y للدالة f(x) = 3^x؟', en: 'What is the y-intercept of the function f(x) = 3^x?' },
+                    options: [
+                        { ar: '(0, 1)', en: '(0, 1)' },
+                        { ar: '(1, 0)', en: '(1, 0)' },
+                        { ar: '(0, 0)', en: '(0, 0)' },
+                        { ar: '(1, 3)', en: '(1, 3)' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "التعويض الدقيق يعطي القيمة العددية الصحيحة الخالية من التقريب العشوائي.",
-                        "en": "Exact substitution gives the correct numerical value free from random approximation."
-                    }
+                    correct: 0,
+                    answer: { ar: 'نقطة التقاطع مع المحور الرأسي y للدالة f(x) = 3^x هي (0, 1).', en: 'The y-intercept of the function f(x) = 3^x is (0, 1).' }
                 },
                 {
-                    "q": {
-                        "ar": "ما هي النتيجة الصحيحة لتبسيط المقدار الرياضي الممثل لـ الدالة الأسية الطبيعية ذات الأساس e (الرقم النيبيري)؟",
-                        "en": "What is the correct result of simplifying the mathematical expression representing الدالة الأسية الطبيعية ذات الأساس e (الرقم النيبيري)?"
-                    },
-                    "options": [
-                        {
-                            "ar": "المقدار المبسط كلياً الذي يختزل جميع الحدود المتشابهة في صياغة واحدة",
-                            "en": "The fully simplified expression that reduces all like terms into a single formulation"
-                        },
-                        {
-                            "ar": "مقدار من الدرجة الثامنة يشتمل على معاملات غير صحيحة",
-                            "en": "An eighth-degree expression containing non-integer coefficients"
-                        },
-                        {
-                            "ar": "تعبير لا خطي يؤول دائماً لمالانهاية الموجبة والسالبة",
-                            "en": "A non-linear expression always leading to positive and negative infinity"
-                        },
-                        {
-                            "ar": "مقدار صفري ينعدم تماماً عند جميع النقاط الحقيقية",
-                            "en": "A zero expression that vanishes completely at all real points"
-                        }
+                    q: { ar: 'ما سلوك الدالة f(x) = 3^x عند x → ∞؟', en: 'What is the behavior of the function f(x) = 3^x as x → ∞?' },
+                    options: [
+                        { ar: 'f(x) → ∞', en: 'f(x) → ∞' },
+                        { ar: 'f(x) → 0', en: 'f(x) → 0' },
+                        { ar: 'f(x) → 1', en: 'f(x) → 1' },
+                        { ar: 'f(x) → -∞', en: 'f(x) → -∞' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تبسيط المقادير يسهل تحليل خصائصها ورسم منحنياتها بيانيا.",
-                        "en": "Simplifying expressions makes it easier to analyze their properties and graph them."
-                    }
+                    correct: 0,
+                    answer: { ar: 'سلوك الدالة f(x) = 3^x عند x → ∞ هو f(x) → ∞.', en: 'The behavior of the function f(x) = 3^x as x → ∞ is f(x) → ∞.' }
                 },
                 {
-                    "q": {
-                        "ar": "إذا قمنا بالتعويض في دالة الدالة الأسية الطبيعية ذات الأساس e (الرقم النيبيري) بالمتغير المستقل المضاف، فما هو التعبير الناتج؟",
-                        "en": "If we substitute into the function of الدالة الأسية الطبيعية ذات الأساس e (الرقم النيبيري) with the shifted independent variable, what is the resulting expression?"
-                    },
-                    "options": [
-                        {
-                            "ar": "التعبير الجبري المزاح الذي يعكس التحويل المطلوب بدقة متناهية",
-                            "en": "The shifted algebraic expression that reflects the required transformation with absolute accuracy"
-                        },
-                        {
-                            "ar": "نفس التعبير الأصلي دون أي تغيير في المعاملات أو الأسس",
-                            "en": "The same original expression without any change in coefficients or exponents"
-                        },
-                        {
-                            "ar": "تعبير خطي بسيط يخلو من المتغير المستقل الأصلي",
-                            "en": "A simple linear expression devoid of the original independent variable"
-                        },
-                        {
-                            "ar": "مقدار غير معرف بسبب وقوع الصفر في مقام الكسر",
-                            "en": "An undefined expression due to zero occurring in the fraction's denominator"
-                        }
+                    q: { ar: 'ما سلوك الدالة f(x) = 3^x عند x → -∞؟', en: 'What is the behavior of the function f(x) = 3^x as x → -∞?' },
+                    options: [
+                        { ar: 'f(x) → 0', en: 'f(x) → 0' },
+                        { ar: 'f(x) → ∞', en: 'f(x) → ∞' },
+                        { ar: 'f(x) → 1', en: 'f(x) → 1' },
+                        { ar: 'f(x) → -∞', en: 'f(x) → -∞' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "التعويض بالمتغير المزاح يعيد تشكيل الدالة لتعكس التحويل الهندسي الحاصل.",
-                        "en": "Substituting with a shifted variable reshapes the function to reflect the geometric transformation."
-                    }
+                    correct: 0,
+                    answer: { ar: 'سلوك الدالة f(x) = 3^x عند x → -∞ هو f(x) → 0.', en: 'The behavior of the function f(x) = 3^x as x → -∞ is f(x) → 0.' }
                 },
                 {
-                    "q": {
-                        "ar": "ما هي أصفار المعادلة أو نقاط الحل المرتبطة بـ الدالة الأسية الطبيعية ذات الأساس e (الرقم النيبيري)؟",
-                        "en": "What are the equation zeros or solution points associated with الدالة الأسية الطبيعية ذات الأساس e (الرقم النيبيري)?"
-                    },
-                    "options": [
-                        {
-                            "ar": "القيم العددية الدقيقة التي تحقق المعادلة وتجعل الدالة مساوية للصفر تماماً",
-                            "en": "The exact numerical values that satisfy the equation and make the function strictly equal to zero"
-                        },
-                        {
-                            "ar": "القيم السالبة فقط التي تقع ضمن فترات الاختبار غير الحقيقية",
-                            "en": "The negative values only that fall within non-real test intervals"
-                        },
-                        {
-                            "ar": "النقاط التي تتقاطع عندها الدالة مع خطوط التقارب المائلة",
-                            "en": "The points where the function intersects the oblique asymptotes"
-                        },
-                        {
-                            "ar": "أعداد حقيقية تزيد بمقدار الثابت التأسيسي للمحور الصادي",
-                            "en": "Real numbers shifted by the starting constant of the y-axis"
-                        }
+                    q: { ar: 'ما خط التقارب الأفقي للدالة g(x) = (1/4)^x؟', en: 'What is the horizontal asymptote of the function g(x) = (1/4)^x?' },
+                    options: [
+                        { ar: 'y = 0', en: 'y = 0' },
+                        { ar: 'y = 1', en: 'y = 1' },
+                        { ar: 'x = 0', en: 'x = 0' },
+                        { ar: 'لا يوجد خط تقارب أفقي', en: 'No horizontal asymptote' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "أصفار الدالة هي الحلول الجبرية الدقيقة الناتجة عن تصفير المعادلة.",
-                        "en": "The zeros of a function are the exact algebraic solutions resulting from setting the equation to zero."
-                    }
+                    correct: 0,
+                    answer: { ar: 'خط التقارب الأفقي للدالة g(x) = (1/4)^x هو y = 0.', en: 'The horizontal asymptote of the function g(x) = (1/4)^x is y = 0.' }
                 }
             ]
         },
         {
-            "title": {
-                "ar": "🔹 الجزء الثالث: قوانين وحساب الفائدة المركبة (Compound Interest) لعدد n من الفترات",
-                "en": "🔹 Part 3: قوانين وحساب الفائدة المركبة (Compound Interest) لعدد n من الفترات"
-            },
-            "questions": [
+            id: 'sec3',
+            title: { ar: '🔹 الجزء الثالث: التحولات في الدوال الأسية', en: '🔹 Part 3: Transformations of Exponential Functions' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "ما هي المهارة الحسابية المتقدمة التي يجب تطبيقها لحل مشكلات قوانين وحساب الفائدة المركبة (Compound Interest) لعدد n من الفترات؟",
-                        "en": "What advanced calculation skill must be applied to solve problems of قوانين وحساب الفائدة المركبة (Compound Interest) لعدد n من الفترات?"
-                    },
-                    "options": [
-                        {
-                            "ar": "التحليل الجبري الشامل وتحديد الشروط والقيود المفروضة على المتغيرات بدقة",
-                            "en": "Comprehensive algebraic analysis and strictly defining the conditions and constraints on variables"
-                        },
-                        {
-                            "ar": "استبدال جميع الثوابت بقيم عشوائية لتجربتها بالاختيار المتعدد",
-                            "en": "Replacing all constants with random values to test them via multiple choice"
-                        },
-                        {
-                            "ar": "استخدام الآلة الحاسبة دون الحاجة لفهم الخطوات التفصيلية للحل",
-                            "en": "Using the calculator without needing to understand the detailed solution steps"
-                        },
-                        {
-                            "ar": "الاعتماد على التقريب الهندسي السريع للمنحنيات اللانهائية",
-                            "en": "Relying on quick geometric approximation of infinite curves"
-                        }
+                    q: { ar: 'ما التحول الذي يحدث للدالة f(x) = 2^x للحصول على الدالة g(x) = 2^(x+1)؟', en: 'What transformation occurs to the function f(x) = 2^x to obtain the function g(x) = 2^(x+1)?' },
+                    options: [
+                        { ar: 'إزاحة إلى اليسار وحدة واحدة', en: 'Shift left by 1 unit' },
+                        { ar: 'إزاحة إلى اليمين وحدة واحدة', en: 'Shift right by 1 unit' },
+                        { ar: 'إزاحة إلى الأعلى وحدة واحدة', en: 'Shift up by 1 unit' },
+                        { ar: 'إزاحة إلى الأسفل وحدة واحدة', en: 'Shift down by 1 unit' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "المهارات المتقدمة تشتمل على التحليل الرياضي المنطقي وتتبع الخطوات بدقة.",
-                        "en": "Advanced skills comprise logical mathematical analysis and tracking steps carefully."
-                    }
+                    correct: 0,
+                    answer: { ar: 'التحول الذي يحدث للدالة f(x) = 2^x للحصول على الدالة g(x) = 2^(x+1) هو إزاحة إلى اليسار وحدة واحدة.', en: 'The transformation that occurs to the function f(x) = 2^x to obtain the function g(x) = 2^(x+1) is a shift left by 1 unit.' }
                 },
                 {
-                    "q": {
-                        "ar": "كيف نتحقق من صحة الحل الجبري لـ قوانين وحساب الفائدة المركبة (Compound Interest) لعدد n من الفترات؟",
-                        "en": "How do we verify the validity of the algebraic solution for قوانين وحساب الفائدة المركبة (Compound Interest) لعدد n من الفترات?"
-                    },
-                    "options": [
-                        {
-                            "ar": "بالتعويض بالحلول في المعادلة الأصلية والتأكد من تحقيقها للتساوي أو الشرط",
-                            "en": "By substituting the solutions into the original equation and ensuring they satisfy the equality or condition"
-                        },
-                        {
-                            "ar": "بمقارنتها بالرسوم التوضيحية التقريبية لدروس أخرى مختلفة",
-                            "en": "By comparing them with approximate illustrations of other different lessons"
-                        },
-                        {
-                            "ar": "بافتراض أن جميع الحلول الناتجة صحيحة دون الحاجة لأي تحقق إضافي",
-                            "en": "By assuming all resulting solutions are correct without any additional verification"
-                        },
-                        {
-                            "ar": "عن طريق تحويل جميع القيم الحقيقية إلى أعداد مركبة تخيلية دائمأ",
-                            "en": "By transforming all real values into complex imaginary numbers always"
-                        }
+                    q: { ar: 'ما التحول الذي يحدث للدالة f(x) = 2^x للحصول على الدالة h(x) = 2^(-x)؟', en: 'What transformation occurs to the function f(x) = 2^x to obtain the function h(x) = 2^(-x)?' },
+                    options: [
+                        { ar: 'انعكاس حول المحور الأفقي y', en: 'Reflection over the y-axis' },
+                        { ar: 'انعكاس حول المحور الرأسي x', en: 'Reflection over the x-axis' },
+                        { ar: 'إزاحة إلى الأعلى وحدة واحدة', en: 'Shift up by 1 unit' },
+                        { ar: 'إزاحة إلى الأسفل وحدة واحدة', en: 'Shift down by 1 unit' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "التحقق من الحلول يضمن استبعاد الحلول الدخيلة والتأكد من دقة العمل الجبري.",
-                        "en": "Verifying solutions ensures excluding extraneous solutions and validating the algebraic work."
-                    }
+                    correct: 0,
+                    answer: { ar: 'التحول الذي يحدث للدالة f(x) = 2^x للحصول على الدالة h(x) = 2^(-x) هو انعكاس حول المحور الأفقي y.', en: 'The transformation that occurs to the function f(x) = 2^x to obtain the function h(x) = 2^(-x) is a reflection over the y-axis.' }
                 },
                 {
-                    "q": {
-                        "ar": "ما هي الأخطاء الشائعة التي يجب تجنبها عند دراسة قوانين وحساب الفائدة المركبة (Compound Interest) لعدد n من الفترات؟",
-                        "en": "What are the common errors to avoid when studying قوانين وحساب الفائدة المركبة (Compound Interest) لعدد n من الفترات?"
-                    },
-                    "options": [
-                        {
-                            "ar": "إغفال قيود المجال وشروط المعرفات مثل تجنب الصفر في المقام أو المقادير السالبة تحت الجذر الزوجي",
-                            "en": "Overlooking domain constraints and defined conditions like avoiding zero in denominator or negative values under even roots"
-                        },
-                        {
-                            "ar": "كتابة الرموز الرياضية بخط اليد بدلاً من طباعتها بالحاسوب",
-                            "en": "Writing mathematical symbols by hand instead of typing them on a computer"
-                        },
-                        {
-                            "ar": "استخدام ورق الرسم البياني غير المسطر بدقة",
-                            "en": "Using graph paper that is not ruled with absolute precision"
-                        },
-                        {
-                            "ar": "اعتبار جميع الدوال الأسية دوال لوغاريتمية طبيعية دائماً",
-                            "en": "Considering all exponential functions as natural logarithmic functions always"
-                        }
+                    q: { ar: 'ما التحول الذي يحدث للدالة f(x) = 2^x للحصول على الدالة j(x) = -3(2^x)؟', en: 'What transformation occurs to the function f(x) = 2^x to obtain the function j(x) = -3(2^x)?' },
+                    options: [
+                        { ar: 'انعكاس حول المحور الأفقي x ومد رأسيا بمعامل 3', en: 'Reflection over the x-axis and vertical stretch by a factor of 3' },
+                        { ar: 'انعكاس حول المحور الرأسي y ومد رأسيا بمعامل 3', en: 'Reflection over the y-axis and vertical stretch by a factor of 3' },
+                        { ar: 'إزاحة إلى الأعلى 3 وحدات', en: 'Shift up by 3 units' },
+                        { ar: 'إزاحة إلى الأسفل 3 وحدات', en: 'Shift down by 3 units' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تجنب الأخطاء الشائعة يحمي الطالب من ارتكاب هفوات حسابية تضيع صحة النواتج.",
-                        "en": "Avoiding common errors protects students from making computational slips that compromise results."
-                    }
+                    correct: 0,
+                    answer: { ar: 'التحول الذي يحدث للدالة f(x) = 2^x للحصول على الدالة j(x) = -3(2^x) هو انعكاس حول المحور الأفقي x ومد رأسيا بمعامل 3.', en: 'The transformation that occurs to the function f(x) = 2^x to obtain the function j(x) = -3(2^x) is a reflection over the x-axis and vertical stretch by a factor of 3.' }
                 },
                 {
-                    "q": {
-                        "ar": "أي من الحالات التالية تعبر عن تطبيق متقدم لـ قوانين وحساب الفائدة المركبة (Compound Interest) لعدد n من الفترات؟",
-                        "en": "Which of the following cases expresses an advanced application of قوانين وحساب الفائدة المركبة (Compound Interest) لعدد n من الفترات?"
-                    },
-                    "options": [
-                        {
-                            "ar": "تحليل الأنظمة الديناميكية وحساب فترات الثبات ومعدلات التغير للمتغيرات المعقدة",
-                            "en": "Analyzing dynamic systems and calculating stability intervals and rates of change for complex variables"
-                        },
-                        {
-                            "ar": "رسم أشكال هندسية بسيطة كالمستطيلات والمربعات يدوياً",
-                            "en": "Drawing simple geometric shapes like rectangles and squares by hand"
-                        },
-                        {
-                            "ar": "حساب العمليات الحسابية الأساسية للجمع والطرح الحسابي البسيط",
-                            "en": "Calculating basic arithmetic operations for simple addition and subtraction"
-                        },
-                        {
-                            "ar": "استبدال نظام الأرقام العشري بنظام العد الثنائي الإلكتروني",
-                            "en": "Substituting the decimal number system with the binary electronic system"
-                        }
+                    q: { ar: 'ما التحول الذي يحدث للدالة f(x) = e^x للحصول على الدالة k(x) = e^(4x)؟', en: 'What transformation occurs to the function f(x) = e^x to obtain the function k(x) = e^(4x)?' },
+                    options: [
+                        { ar: 'ضغط أفقي بمعامل 1/4', en: 'Horizontal compression by a factor of 1/4' },
+                        { ar: 'ضغط أفقي بمعامل 4', en: 'Horizontal compression by a factor of 4' },
+                        { ar: 'مد أفقي بمعامل 4', en: 'Horizontal stretch by a factor of 4' },
+                        { ar: 'مد أفقي بمعامل 1/4', en: 'Horizontal stretch by a factor of 1/4' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تطبيقات الدوال كثيرة ومتشعبة في مجالات العلوم والهندسة والنمذجة الرياضية.",
-                        "en": "Function applications are numerous and diverse in science, engineering, and mathematical modeling."
-                    }
+                    correct: 0,
+                    answer: { ar: 'التحول الذي يحدث للدالة f(x) = e^x للحصول على الدالة k(x) = e^(4x) هو ضغط أفقي بمعامل 1/4.', en: 'The transformation that occurs to the function f(x) = e^x to obtain the function k(x) = e^(4x) is a horizontal compression by a factor of 1/4.' }
                 }
             ]
         },
         {
-            "title": {
-                "ar": "🔹 الجزء الرابع: قوانين الفائدة المركبة المستمرة (Continuous Compounding)",
-                "en": "🔹 Part 4: قوانين الفائدة المركبة المستمرة (Continuous Compounding)"
-            },
-            "questions": [
+            id: 'sec4',
+            title: { ar: '🔹 الجزء الرابع: النمو والتضاؤل الأسي', en: '🔹 Part 4: Exponential Growth and Decay' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "كيف تستخدم قوانين الفائدة المركبة المستمرة (Continuous Compounding) في حل المسائل التطبيقية والعملية؟",
-                        "en": "How is قوانين الفائدة المركبة المستمرة (Continuous Compounding) used in solving applied and practical problems?"
-                    },
-                    "options": [
-                        {
-                            "ar": "بتحويل النص اللفظي للمشكلة إلى معادلة رياضية دقيقة وحلها وفقاً للأساليب الجبرية المعتمدة",
-                            "en": "By translating the verbal problem into an accurate mathematical equation and solving it using approved algebraic methods"
-                        },
-                        {
-                            "ar": "برسم مخططات تقريبية ملونة دون الالتزام بالقيم والبيانات الواردة في السؤال",
-                            "en": "By drawing colorful approximate charts without adhering to the values and data in the question"
-                        },
-                        {
-                            "ar": "بافتراض أن الحل دائماً يؤول للرقم عشرة أو الصفر لسهولة التدوين",
-                            "en": "By assuming the solution always leads to ten or zero for easy recording"
-                        },
-                        {
-                            "ar": "بالاعتماد على التجربة العملية المتكررة داخل المختبرات فقط",
-                            "en": "By relying on repeated physical experimentation in laboratories only"
-                        }
+                    q: { ar: 'ما صيغة قاعدة النمو الأسي؟', en: 'What is the formula for exponential growth?' },
+                    options: [
+                        { ar: 'N = N₀(1 + r)^t', en: 'N = N₀(1 + r)^t' },
+                        { ar: 'N = N₀(1 - r)^t', en: 'N = N₀(1 - r)^t' },
+                        { ar: 'N = N₀e^(rt)', en: 'N = N₀e^(rt)' },
+                        { ar: 'N = N₀e^(-rt)', en: 'N = N₀e^(-rt)' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "النمذجة الرياضية هي عملية تحويل الظواهر الحياتية إلى نماذج رياضية يمكن حلها وتحليلها.",
-                        "en": "Mathematical modeling is the process of converting real-world phenomena into mathematical models that can be solved and analyzed."
-                    }
+                    correct: 0,
+                    answer: { ar: 'صيغة قاعدة النمو الأسي هي N = N₀(1 + r)^t.', en: 'The formula for exponential growth is N = N₀(1 + r)^t.' }
                 },
                 {
-                    "q": {
-                        "ar": "ما الأهمية العملية لدراسة قوانين الفائدة المركبة المستمرة (Continuous Compounding) في التخطيط واتخاذ القرارات؟",
-                        "en": "What is the practical importance of studying قوانين الفائدة المركبة المستمرة (Continuous Compounding) in planning and decision making?"
-                    },
-                    "options": [
-                        {
-                            "ar": "التنبؤ الدقيق بالقيم المستقبلية وتحديد الحدود القصوى والدنيا للمتغيرات المؤثرة كالأرباح والتكاليف",
-                            "en": "Accurately forecasting future values and determining maximum and minimum limits for influential variables like profits and costs"
-                        },
-                        {
-                            "ar": "الاستغناء الكامل عن الكوادر البشرية في مجالات الإحصاء الرياضي",
-                            "en": "Complete elimination of human personnel in mathematical statistics fields"
-                        },
-                        {
-                            "ar": "إثبات أن جميع المشاكل الحياتية يمكن تمثيلها بخطوط مستقيمة بسيطة دائماً",
-                            "en": "Proving that all real-life problems can always be represented by simple straight lines"
-                        },
-                        {
-                            "ar": "تقليص الفترات الزمنية اللازمة لتصنيع المنتجات بشكل يدوي",
-                            "en": "Reducing time intervals required for manufacturing products manually"
-                        }
+                    q: { ar: 'ما صيغة قاعدة التضاؤل الأسي؟', en: 'What is the formula for exponential decay?' },
+                    options: [
+                        { ar: 'N = N₀(1 - r)^t', en: 'N = N₀(1 - r)^t' },
+                        { ar: 'N = N₀(1 + r)^t', en: 'N = N₀(1 + r)^t' },
+                        { ar: 'N = N₀e^(rt)', en: 'N = N₀e^(rt)' },
+                        { ar: 'N = N₀e^(-rt)', en: 'N = N₀e^(-rt)' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تساعد دراسة النماذج الرياضية في بناء خطط استراتيجية مستندة إلى تقديرات وتنبؤات علمية دقيقة.",
-                        "en": "Studying mathematical models helps build strategic plans based on highly accurate scientific estimates and forecasts."
-                    }
+                    correct: 0,
+                    answer: { ar: 'صيغة قاعدة التضاؤل الأسي هي N = N₀(1 - r)^t.', en: 'The formula for exponential decay is N = N₀(1 - r)^t.' }
                 },
                 {
-                    "q": {
-                        "ar": "كيف يمثل سلوك قوانين الفائدة المركبة المستمرة (Continuous Compounding) بيانياً لتسهيل فهم وتفسير النتائج؟",
-                        "en": "How is the behavior of قوانين الفائدة المركبة المستمرة (Continuous Compounding) graphed to facilitate understanding and interpreting results?"
-                    },
-                    "options": [
-                        {
-                            "ar": "برسم منحنيات ناعمة ومستمرة تعكس خصائص الدالة وتظهر نقاط التقاطع والتماثل والتقارب بوضوح",
-                            "en": "By drawing smooth, continuous curves reflecting function properties, clearly showing intersections, symmetry, and asymptotes"
-                        },
-                        {
-                            "ar": "برسم مضلعات حادة الزوايا غير مستمرة على الإطلاق",
-                            "en": "By drawing sharp-angled polygons that are not continuous at all"
-                        },
-                        {
-                            "ar": "بتلوين المساحات المحصورة أسفل المنحنى بألوان زاهية مختلفة",
-                            "en": "By coloring the areas bounded below the curve with different bright colors"
-                        },
-                        {
-                            "ar": "بمحاكاة ثلاثية الأبعاد تعتمد على برمجيات التصميم المعماري الصرف",
-                            "en": "By 3D simulations relying purely on architectural design software"
-                        }
+                    q: { ar: 'إذا كان عدد سكان مدينة 100,000 نسمة وينمو بمعدل 2% سنويًا، فما عدد السكان بعد 10 سنوات؟', en: 'If the population of a city is 100,000 and grows at a rate of 2% per year, what will be the population after 10 years?' },
+                    options: [
+                        { ar: '121,899 نسمة', en: '121,899 people' },
+                        { ar: '120,000 نسمة', en: '120,000 people' },
+                        { ar: '102,000 نسمة', en: '102,000 people' },
+                        { ar: '110,000 نسمة', en: '110,000 people' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "التمثيل البياني يجسد سلوك الدوال المعقدة بطريقة بصرية سهلة القراءة والتحليل.",
-                        "en": "Graphing embodies the behavior of complex functions in a visual, easy-to-read, and analyze format."
-                    }
+                    correct: 0,
+                    answer: { ar: 'عدد السكان بعد 10 سنوات هو 100,000 × (1 + 0.02)^10 ≈ 121,899 نسمة.', en: 'The population after 10 years is 100,000 × (1 + 0.02)^10 ≈ 121,899 people.' }
                 },
                 {
-                    "q": {
-                        "ar": "أي مما يلي يمثل سيناريو عملي واقعي لتطبيق قوانين الفائدة المركبة المستمرة (Continuous Compounding)؟",
-                        "en": "Which of the following represents a realistic practical scenario for applying قوانين الفائدة المركبة المستمرة (Continuous Compounding)?"
-                    },
-                    "options": [
-                        {
-                            "ar": "حساب تغير درجات حرارة الغلاف الجوي أو حساب التكاثر البكتيري ونمو السكان والشركات عبر الزمن",
-                            "en": "Calculating atmospheric temperature variations or bacterial growth, population growth, and company expansion over time"
-                        },
-                        {
-                            "ar": "ترتيب الكتب في المكتبات المدرسية بناء على الحجم والوزن",
-                            "en": "Arranging books in school libraries based on size and weight"
-                        },
-                        {
-                            "ar": "تصنيف الحيوانات الأليفة في حدائق الحيوان بناء على فصائلها الحيوية",
-                            "en": "Classifying domestic animals in zoos based on their biological families"
-                        },
-                        {
-                            "ar": "حساب السرعة القصوى للقطارات البخارية القديمة في القرن التاسع عشر",
-                            "en": "Calculating the top speed of old steam trains in the nineteenth century"
-                        }
+                    q: { ar: 'إذا كان مقدار مادة مشعة 200 جرام ويتضاؤل بمعدل 5% سنويًا، فما مقدار المادة بعد 5 سنوات؟', en: 'If the amount of a radioactive substance is 200 grams and decays at a rate of 5% per year, what will be the amount after 5 years?' },
+                    options: [
+                        { ar: '159.62 جرام', en: '159.62 grams' },
+                        { ar: '190 جرام', en: '190 grams' },
+                        { ar: '180 جرام', en: '180 grams' },
+                        { ar: '170 جرام', en: '170 grams' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تدخل هذه النماذج في دراسة وحل مشكلات النمو والتكاثر ونسب التغير في الطبيعة والصناعة.",
-                        "en": "These models are involved in studying and solving problems of growth, decay, and rates of change in nature and industry."
-                    }
+                    correct: 0,
+                    answer: { ar: 'مقدار المادة بعد 5 سنوات هو 200 × (1 - 0.05)^5 ≈ 159.62 جرام.', en: 'The amount of the substance after 5 years is 200 × (1 - 0.05)^5 ≈ 159.62 grams.' }
                 }
             ]
         },
         {
-            "title": {
-                "ar": "🔹 الجزء الخامس: نمذجة النمو السكاني والتضاؤل الإشعاعي وحساب القيم المستقبلية",
-                "en": "🔹 Part 5: نمذجة النمو السكاني والتضاؤل الإشعاعي وحساب القيم المستقبلية"
-            },
-            "questions": [
+            id: 'sec5',
+            title: { ar: '🔹 الجزء الخامس: التطبيقات الحياتية', en: '🔹 Part 5: Real-Life Applications' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "ما هو التحدي الرياضي والتحليل المنطقي المرتبط بـ نمذجة النمو السكاني والتضاؤل الإشعاعي وحساب القيم المستقبلية؟",
-                        "en": "What is the mathematical challenge and logical analysis associated with نمذجة النمو السكاني والتضاؤل الإشعاعي وحساب القيم المستقبلية?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الربط العميق بين الأساليب الجبرية والتطبيقات البيانية وإثبات صحة النظريات والحلول علمياً",
-                            "en": "Deeply connecting algebraic methods with graphical applications and scientifically proving theories and solutions"
-                        },
-                        {
-                            "ar": "حفظ جميع الصيغ الرياضية غيباً دون الحاجة لفهم كيفية استنتاجها أو تطبيقها",
-                            "en": "Memorizing all mathematical formulas by heart without needing to understand how they are derived or applied"
-                        },
-                        {
-                            "ar": "إثبات أن جميع العمليات الحسابية يمكن اختزالها بالجمع الرياضي البسيط",
-                            "en": "Proving that all mathematical operations can be reduced to simple addition"
-                        },
-                        {
-                            "ar": "تجاهل الشروط الخاصة بتماثل المنحنيات لتبسيط الحلول",
-                            "en": "Ignoring curve symmetry conditions to simplify solutions"
-                        }
+                    q: { ar: 'إذا تم استثمار 300 AED في حساب بنسبة مرابحة 6% مركبة سنويًا، فما رصيد الحساب بعد 20 عامًا؟', en: 'If 300 AED is invested in an account with a 6% annual interest rate compounded annually, what will be the balance after 20 years?' },
+                    options: [
+                        { ar: '962.14 AED', en: '962.14 AED' },
+                        { ar: '978.61 AED', en: '978.61 AED' },
+                        { ar: '993.06 AED', en: '993.06 AED' },
+                        { ar: '996.04 AED', en: '996.04 AED' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "مهارات التفكير العليا تطلب الربط الواعي والفهم الشامل ومناقشة الحلول وبراهينها.",
-                        "en": "Higher-order thinking skills require conscious linking, comprehensive understanding, and discussing solutions and their proofs."
-                    }
+                    correct: 0,
+                    answer: { ar: 'رصيد الحساب بعد 20 عامًا هو 300 × (1 + 0.06)^20 ≈ 962.14 AED.', en: 'The balance after 20 years is 300 × (1 + 0.06)^20 ≈ 962.14 AED.' }
                 },
                 {
-                    "q": {
-                        "ar": "كيف نبرهن بشكل منطقي صحة الحلول المقترحة لمشكلات نمذجة النمو السكاني والتضاؤل الإشعاعي وحساب القيم المستقبلية؟",
-                        "en": "How do we logically prove the validity of proposed solutions for نمذجة النمو السكاني والتضاؤل الإشعاعي وحساب القيم المستقبلية problems?"
-                    },
-                    "options": [
-                        {
-                            "ar": "باستخدام قوانين المنطق الرياضي والبراهين الجبرية المتعاقبة التي لا تقبل الشك",
-                            "en": "Using the laws of mathematical logic and sequential algebraic proofs that leave no room for doubt"
-                        },
-                        {
-                            "ar": "بأخذ رأي أغلبية الطلاب في الصف كمرجع لصحة الإجابة",
-                            "en": "By taking the opinion of the majority of classmates as a reference for the correct answer"
-                        },
-                        {
-                            "ar": "بمقارنتها بالحلول التقريبية للمقادير الهندسية في مجالات الفضاء",
-                            "en": "By comparing them with approximate solutions of geometric figures in space fields"
-                        },
-                        {
-                            "ar": "بافتراض أن جميع النماذج تتوافق تلقائياً مع الفرضيات الرياضية البسيطة",
-                            "en": "By assuming that all models automatically conform to simple mathematical hypotheses"
-                        }
+                    q: { ar: 'إذا تم استثمار 300 AED في حساب بنسبة مرابحة 6% مركبة باستمرار، فما رصيد الحساب بعد 20 عامًا؟', en: 'If 300 AED is invested in an account with a 6% annual interest rate compounded continuously, what will be the balance after 20 years?' },
+                    options: [
+                        { ar: '962.14 AED', en: '962.14 AED' },
+                        { ar: '978.61 AED', en: '978.61 AED' },
+                        { ar: '993.06 AED', en: '993.06 AED' },
+                        { ar: '996.04 AED', en: '996.04 AED' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "البرهان الرياضي يقوم على التسلسل المنطقي والقوانين المثبتة سابقاً بعيداً عن العشوائية.",
-                        "en": "Mathematical proof is based on logical sequencing and previously proven laws, far from randomness."
-                    }
+                    correct: 3,
+                    answer: { ar: 'رصيد الحساب بعد 20 عامًا هو 300 × e^(0.06 × 20) ≈ 996.04 AED.', en: 'The balance after 20 years is 300 × e^(0.06 × 20) ≈ 996.04 AED.' }
                 },
                 {
-                    "q": {
-                        "ar": "ما الذي يستنتجه الطالب المتميز بعد دراسته العميقة لـ نمذجة النمو السكاني والتضاؤل الإشعاعي وحساب القيم المستقبلية؟",
-                        "en": "What does an outstanding student conclude after a deep study of نمذجة النمو السكاني والتضاؤل الإشعاعي وحساب القيم المستقبلية?"
-                    },
-                    "options": [
-                        {
-                            "ar": "أن الرياضيات لغة متكاملة تصف الطبيعة بدقة وتوفر أدوات تحليل وحل لأعقد الظواهر المحيطة بنا",
-                            "en": "That mathematics is an integrated language describing nature accurately and providing tools to analyze and solve the most complex phenomena around us"
-                        },
-                        {
-                            "ar": "أن جميع المسائل الرياضية تم حلها سابقاً ولا حاجة للمزيد من الابتكار أو التطوير",
-                            "en": "That all mathematical problems have been solved previously and there is no need for further innovation or development"
-                        },
-                        {
-                            "ar": "أن النماذج الخطية كافية وحدها لتمثيل كل المتغيرات في الكون دون حاجة للنماذج اللاخطية",
-                            "en": "That linear models alone are sufficient to represent all variables in the universe without needing non-linear models"
-                        },
-                        {
-                            "ar": "أن دراسة الدوال تقتصر فائدتها على اجتياز الاختبارات المدرسية المحددة فقط",
-                            "en": "That studying functions is useful only for passing specific school examinations"
-                        }
+                    q: { ar: 'إذا كان عدد سكان المكسيك 110 ملايين نسمة وينمو بمعدل 1.42% سنويًا، فما عدد السكان بعد 10 سنوات؟', en: 'If the population of Mexico is 110 million and grows at a rate of 1.42% per year, what will be the population after 10 years?' },
+                    options: [
+                        { ar: '126,656,869 نسمة', en: '126,656,869 people' },
+                        { ar: '126,783,431 نسمة', en: '126,783,431 people' },
+                        { ar: '145,836,022 نسمة', en: '145,836,022 people' },
+                        { ar: '146,127,622 نسمة', en: '146,127,622 people' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الرياضيات هي أداة التفكير العلمي المنظم ولغة التطوير والابتكار التكنولوجي المستمر.",
-                        "en": "Mathematics is the tool of organized scientific thinking and the language of continuous technological development and innovation."
-                    }
+                    correct: 0,
+                    answer: { ar: 'عدد السكان بعد 10 سنوات هو 110,000,000 × (1 + 0.0142)^10 ≈ 126,656,869 نسمة.', en: 'The population after 10 years is 110,000,000 × (1 + 0.0142)^10 ≈ 126,656,869 people.' }
                 },
                 {
-                    "q": {
-                        "ar": "كيف يسهم التفكير الإبداعي في تطوير وتطبيق نماذج نمذجة النمو السكاني والتضاؤل الإشعاعي وحساب القيم المستقبلية؟",
-                        "en": "How does creative thinking contribute to developing and applying models of نمذجة النمو السكاني والتضاؤل الإشعاعي وحساب القيم المستقبلية?"
-                    },
-                    "options": [
-                        {
-                            "ar": "بابتكار طرق حل جديدة واختصار الخطوات الطويلة ودمج المعارف والربط بين حقول العلوم المختلفة",
-                            "en": "By innovating new solution methods, shortcutting long steps, merging knowledge, and linking different fields of science"
-                        },
-                        {
-                            "ar": "بتصميم واجهات ملونة وغير منظمة لتبديد رتابة الرسوم البيانية القديمة",
-                            "en": "By designing colorful, unorganized interfaces to break the monotony of old graphs"
-                        },
-                        {
-                            "ar": "بالتخلي عن القوانين الجبرية الصارمة واعتماد الحدس الرياضي المباشر فقط",
-                            "en": "By abandoning strict algebraic laws and relying solely on direct mathematical intuition"
-                        },
-                        {
-                            "ar": "باستبدال الأرقام بالرموز التعبيرية التفاعلية الممتعة",
-                            "en": "By replacing numbers with fun, interactive expressive emojis"
-                        }
+                    q: { ar: 'إذا كان عدد حالات مرض الجدري 190.9 ألف حالة في عام 1980 وينخفض بمعدل 6.9% سنويًا، فما عدد الحالات بعد 25 عامًا؟', en: 'If the number of smallpox cases is 190.9 thousand in 1980 and decreases at a rate of 6.9% per year, what will be the number of cases after 25 years?' },
+                    options: [
+                        { ar: '32.2 ألف حالة', en: '32.2 thousand cases' },
+                        { ar: '20 ألف حالة', en: '20 thousand cases' },
+                        { ar: '10 ألف حالة', en: '10 thousand cases' },
+                        { ar: '50 ألف حالة', en: '50 thousand cases' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "يسهم الإبداع في كسر الجمود الرياضي وتسهيل المعرفة وجعلها أكثر متعة وفائدة للبشرية.",
-                        "en": "Creativity contributes to breaking mathematical rigidity, facilitating knowledge, and making it more enjoyable and useful for humanity."
-                    }
+                    correct: 0,
+                    answer: { ar: 'عدد الحالات بعد 25 عامًا هو 190.9 × (1 - 0.069)^25 ≈ 32.2 ألف حالة.', en: 'The number of cases after 25 years is 190.9 × (1 - 0.069)^25 ≈ 32.2 thousand cases.' }
                 }
             ]
         }
@@ -816,6 +444,8 @@ function prepareShuffledExam() {
             globalIdx++;
         });
     });
+    
+    console.log('✅ تم خلط الأسئلة والخيارات بنجاح');
 }
 
 function reshuffleExam() {
@@ -852,8 +482,8 @@ function setLanguage(lang) {
 function renderExam() {
     const container = document.getElementById('exam-content');
     const labels = {
-        ar: { option: ['أ', 'ب', 'ج', 'د'], answer: '✅ الإجابة الصحيحة:' },
-        en: { option: ['A', 'B', 'C', 'D'], answer: '✅ Correct Answer:' }
+        ar: { option: ['أ', 'ب', 'ج', 'د'], answer: '✅ الإجابة:' },
+        en: { option: ['A', 'B', 'C', 'D'], answer: '✅ Answer:' }
     };
     const lbl = labels[currentLang];
     const isRTL = currentLang === 'ar';
@@ -864,13 +494,13 @@ function renderExam() {
     examData.sections.forEach((section) => {
         html += `
         <section class="bg-white p-6 rounded-xl shadow-lg">
-            <h2 class="text-xl font-bold mb-4 text-teal-700">${section.title[currentLang]}</h2>
+            <h2 class="text-xl font-bold mb-4 text-rose-700">${section.title[currentLang]}</h2>
             <ol class="space-y-4 text-sm">`;
             
         section.questions.forEach((q) => {
             const borderSide = isRTL ? 'border-r-4 pr-4' : 'border-l-4 pl-4';
             html += `
-                <li class="${borderSide} border-teal-500 py-2" id="q-${globalIdx}">
+                <li class="${borderSide} border-rose-500 py-2" id="q-${globalIdx}">
                     <strong>${globalIdx + 1}.</strong> ${q.q[currentLang]}<br>`;
                     
             q.options.forEach((opt, oIdx) => {
@@ -935,17 +565,15 @@ function gradeExam() {
                 correctCount++;
                 li.classList.add('correct');
                 li.classList.remove('incorrect');
-            } else {
-                li.classList.add('incorrect');
-                li.classList.remove('correct');
-            }
-
-            if (isCorrect) {
+                
                 if (i < 4) sec1++;
                 else if (i < 8) sec2++;
                 else if (i < 12) sec3++;
                 else if (i < 16) sec4++;
                 else sec5++;
+            } else {
+                li.classList.add('incorrect');
+                li.classList.remove('correct');
             }
         }
     }
@@ -953,7 +581,7 @@ function gradeExam() {
     const score = (correctCount / 20) * 100;
     const successRate = Math.round(score);
     
-    document.getElementById('res-total').textContent = `${successRate} / 100`;
+    document.getElementById('res-total').textContent = `${Math.round(score)} / 100`;
     document.getElementById('res-name').textContent = document.getElementById('studentName').value || (currentLang === 'ar' ? 'طالب' : 'Student');
     document.getElementById('res-date').textContent = new Date().toLocaleDateString(currentLang === 'ar' ? 'ar-AE' : 'en-US');
     
@@ -998,85 +626,74 @@ function sendResultsToEmail() {
     const badge = document.getElementById('success-badge').textContent;
 
     const sectionNames = {
-        ar: [
-            "الجزء الأول: المفاهيم والقواعد الأساسية والتعريفات",
-            "الجزء الثاني: العمليات الحسابية والحلول العددية الدقيقة",
-            "الجزء الثالث: المهارات المتقدمة والتطبيقات والمسائل",
-            "الجزء الرابع: النمذجة الرياضية والتمثيل البياني والمسائل العملية",
-            "الجزء الخامس: مهارات التفكير العليا والتحليل والربط المنطقي"
-        ],
-        en: [
-            "Part 1: Basic Concepts, Rules, and Definitions",
-            "Part 2: Calculations and Exact Numerical Solutions",
-            "Part 3: Advanced Skills, Applications, and Problems",
-            "Part 4: Mathematical Modeling, Graphing, and Practical Problems",
-            "Part 5: Higher-Order Thinking, Analysis, and Logical Connections"
-        ]
+        ar: ['تعريف الدوال الأسية', 'التمثيل البياني للدوال الأسية', 'التحولات في الدوال الأسية', 'النمو والتضاؤل الأسي', 'التطبيقات الحياتية'],
+        en: ['Definition of Exponential Functions', 'Graphing Exponential Functions', 'Transformations of Exponential Functions', 'Exponential Growth and Decay', 'Real-Life Applications']
     };
     const currentSectionNames = sectionNames[currentLang];
 
     let answersHTML = `
-        <div style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; direction: \${currentLang === 'ar' ? 'rtl' : 'ltr'}; text-align: \${currentLang === 'ar' ? 'right' : 'left'};">
-            <div style="background: linear-gradient(135deg, #0d9488, #0891b2); color: white; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;">
-                <h2 style="margin: 0; font-size: 22px;">⚡ \${currentLang === 'ar' ? 'نتيجة امتحان الرياضيات والتحليل التفاعلي' : 'Math Interactive Exam Result'}</h2>
-                <p style="margin: 5px 0 0 0; opacity: 0.9;">\${currentLang === 'ar' ? 'رياضيات الصف الثاني عشر عام | الفصل الدراسي الأول' : 'Grade 12 General Math | Term 1'}</p>
-                <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.8;">🔀 \${currentLang === 'ar' ? 'تم خلط الأسئلة تلقائياً' : 'Questions were randomly shuffled'}</p>
+        <div style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; direction: ${currentLang === 'ar' ? 'rtl' : 'ltr'};">
+            <div style="background: linear-gradient(135deg, #e11d48, #db2777); color: white; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;">
+                <h2 style="margin: 0; font-size: 22px;">🧮 ${currentLang === 'ar' ? 'نتيجة امتحان الدوال الأسية (3-1)' : 'Exponential Functions (3-1) Exam Result'}</h2>
+                <p style="margin: 5px 0 0 0; opacity: 0.9;">${currentLang === 'ar' ? 'Exponential Functions (3-1)' : 'Exponential Functions (3-1)'}</p>
+                <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.8;">🔀 ${currentLang === 'ar' ? 'تم خلط الأسئلة تلقائياً' : 'Questions were randomly shuffled'}</p>
             </div>
             
-            <div style="background: #f0fdfa; padding: 15px; border: 1px solid #99f6e4;">
+            <div style="background: #fff1f2; padding: 15px; border: 1px solid #fecdd3;">
                 <table style="width: 100%; border-collapse: collapse;">
                     <tr>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">\${currentLang === 'ar' ? '👤 الاسم:' : '👤 Name:'}</td>
-                        <td style="padding: 8px;">\${name}</td>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">\${currentLang === 'ar' ? '🏫 الشعبة:' : '🏫 Class:'}</td>
-                        <td style="padding: 8px;">\${studentClass}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #be123c;">${currentLang === 'ar' ? '👤 الاسم:' : '👤 Name:'}</td>
+                        <td style="padding: 8px;">${name}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #be123c;">${currentLang === 'ar' ? '🏫 الشعبة:' : '🏫 Class:'}</td>
+                        <td style="padding: 8px;">${studentClass}</td>
                     </tr>
                     <tr>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">\${currentLang === 'ar' ? '📅 التاريخ:' : '📅 Date:'}</td>
-                        <td style="padding: 8px;">\${date}</td>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">\${currentLang === 'ar' ? '🏆 التقدير:' : '🏆 Grade:'}</td>
-                        <td style="padding: 8px;">\${badge}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #be123c;">${currentLang === 'ar' ? '📅 التاريخ:' : '📅 Date:'}</td>
+                        <td style="padding: 8px;">${date}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #be123c;">${currentLang === 'ar' ? '🏆 التقدير:' : '🏆 Grade:'}</td>
+                        <td style="padding: 8px;">${badge}</td>
                     </tr>
                 </table>
             </div>
 
             <div style="background: white; padding: 20px; text-align: center; border-bottom: 2px solid #e5e7eb;">
                 <div style="display: inline-block; margin: 0 15px;">
-                    <div style="font-size: 32px; font-weight: bold; color: #0d9488;">\${score}</div>
-                    <div style="color: #6b7280; font-size: 13px;">\${currentLang === 'ar' ? 'الدرجة الكلية' : 'Total Score'}</div>
+                    <div style="font-size: 32px; font-weight: bold; color: #e11d48;">${score}</div>
+                    <div style="color: #6b7280; font-size: 13px;">${currentLang === 'ar' ? 'الدرجة الكلية' : 'Total Score'}</div>
                 </div>
                 <div style="display: inline-block; margin: 0 15px;">
-                    <div style="font-size: 32px; font-weight: bold; color: #059669;">\${successRate}%</div>
-                    <div style="color: #6b7280; font-size: 13px;">\${currentLang === 'ar' ? 'نسبة النجاح' : 'Success Rate'}</div>
+                    <div style="font-size: 32px; font-weight: bold; color: #059669;">${successRate}%</div>
+                    <div style="color: #6b7280; font-size: 13px;">${currentLang === 'ar' ? 'نسبة النجاح' : 'Success Rate'}</div>
                 </div>
             </div>
 
             <h3 style="background: #f3f4f6; padding: 12px; margin: 0; color: #1f2937; border-bottom: 2px solid #d1d5db;">
-                \${currentLang === 'ar' ? '📝 تفاصيل الإجابات' : '📝 Answer Details'}
+                📝 ${currentLang === 'ar' ? 'تفاصيل الإجابات' : 'Answer Details'}
             </h3>
             <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
                 <thead>
-                    <tr style="background: #0d9488; color: white;">
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 8%;">#</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 32%;">\${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 15%;">\${currentLang === 'ar' ? 'الإجابة' : 'Answer'}</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 15%;">\${currentLang === 'ar' ? 'الصحيحة' : 'Correct'}</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 15%;">\${currentLang === 'ar' ? 'النتيجة' : 'Status'}</th>
+                    <tr style="background: #e11d48; color: white;">
+                        <th style="padding: 10px; border: 1px solid #be123c; width: 8%;">#</th>
+                        <th style="padding: 10px; border: 1px solid #be123c; width: 32%;">${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
+                        <th style="padding: 10px; border: 1px solid #be123c; width: 15%;">${currentLang === 'ar' ? 'الإجابة' : 'Answer'}</th>
+                        <th style="padding: 10px; border: 1px solid #be123c; width: 15%;">${currentLang === 'ar' ? 'الصحيحة' : 'Correct'}</th>
+                        <th style="padding: 10px; border: 1px solid #be123c; width: 15%;">${currentLang === 'ar' ? 'النتيجة' : 'Status'}</th>
                     </tr>
                 </thead>
                 <tbody>
     `;
 
-    let sectionScores = [sec1, sec2, sec3, sec4, sec5];
+    let sectionScores = [0, 0, 0, 0, 0];
     let sectionTotals = [4, 4, 4, 4, 4];
 
     for (let i = 0; i < 20; i++) {
-        const selected = document.querySelector(`input[name="q\${i}"]:checked`);
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
         const selectedValue = selected ? selected.value : '-';
         const correctValue = correctAnswersMap[i];
         const isCorrect = selectedValue === correctValue;
         
         const sectionIndex = Math.floor(i / 4);
+        if (isCorrect) sectionScores[sectionIndex]++;
 
         const rowBg = i % 2 === 0 ? '#f9fafb' : '#ffffff';
         const statusBg = isCorrect ? '#dcfce7' : '#fee2e2';
@@ -1087,13 +704,13 @@ function sendResultsToEmail() {
             : (currentLang === 'ar' ? 'خطأ' : 'Wrong');
 
         answersHTML += `
-            <tr style="background: \${rowBg};">
-                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold;">\${i + 1}</td>
-                <td style="padding: 8px; border: 1px solid #e5e7eb;">\${currentSectionNames[sectionIndex]}</td>
-                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold;">\${selectedValue.toUpperCase()}</td>
-                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #059669;">\${correctValue.toUpperCase()}</td>
-                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; background: \${statusBg}; color: \${statusColor}; font-weight: bold;">
-                    \${statusIcon} \${statusText}
+            <tr style="background: ${rowBg};">
+                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold;">${i + 1}</td>
+                <td style="padding: 8px; border: 1px solid #e5e7eb;">${currentSectionNames[sectionIndex]}</td>
+                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold;">${selectedValue.toUpperCase()}</td>
+                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #059669;">${correctValue.toUpperCase()}</td>
+                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; background: ${statusBg}; color: ${statusColor}; font-weight: bold;">
+                    ${statusIcon} ${statusText}
                 </td>
             </tr>
         `;
@@ -1103,15 +720,15 @@ function sendResultsToEmail() {
                 </tbody>
             </table>
 
-            <h3 style="background: #f3f4f6; padding: 12px; margin: 0; color: #1f2937; border-bottom: 2px solid #d1d5db; border-top: 3px solid #0d9488;">
-                📊 \${currentLang === 'ar' ? 'تفصيل الأداء' : 'Performance Breakdown'}
+            <h3 style="background: #f3f4f6; padding: 12px; margin: 0; color: #1f2937; border-bottom: 2px solid #d1d5db; border-top: 3px solid #e11d48;">
+                📊 ${currentLang === 'ar' ? 'تفصيل الأداء' : 'Performance Breakdown'}
             </h3>
             <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
                 <thead>
-                    <tr style="background: #7c3aed; color: white;">
-                        <th style="padding: 10px; border: 1px solid #6d28d9;">\${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
-                        <th style="padding: 10px; border: 1px solid #6d28d9; width: 20%;">\${currentLang === 'ar' ? 'النتيجة' : 'Score'}</th>
-                        <th style="padding: 10px; border: 1px solid #6d28d9; width: 20%;">\${currentLang === 'ar' ? 'النسبة' : 'Percentage'}</th>
+                    <tr style="background: #db2777; color: white;">
+                        <th style="padding: 10px; border: 1px solid #be185d;">${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
+                        <th style="padding: 10px; border: 1px solid #be185d; width: 20%;">${currentLang === 'ar' ? 'النتيجة' : 'Score'}</th>
+                        <th style="padding: 10px; border: 1px solid #be185d; width: 20%;">${currentLang === 'ar' ? 'النسبة' : 'Percentage'}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1123,16 +740,16 @@ function sendResultsToEmail() {
         const rowBg = i % 2 === 0 ? '#f9fafb' : '#ffffff';
         
         answersHTML += `
-            <tr style="background: \${rowBg};">
-                <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: 600;">\${currentSectionNames[i]}</td>
-                <td style="padding: 10px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #0d9488;">
-                    \${sectionScores[i]} / \${sectionTotals[i]}
+            <tr style="background: ${rowBg};">
+                <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: 600;">${currentSectionNames[i]}</td>
+                <td style="padding: 10px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #e11d48;">
+                    ${sectionScores[i]} / ${sectionTotals[i]}
                 </td>
                 <td style="padding: 10px; border: 1px solid #e5e7eb;">
                     <div style="background: #e5e7eb; border-radius: 10px; overflow: hidden; height: 20px; position: relative;">
-                        <div style="background: \${barColor}; width: \${percentage}%; height: 100%;"></div>
-                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12px; font-weight: bold; color: #1f2937;">
-                            \${percentage}%
+                        <div style="background: ${barColor}; width: ${percentage}%; height: 100%;"></div>
+                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 11px; font-weight: bold; color: #1f2937;">
+                            ${percentage}%
                         </span>
                     </div>
                 </td>
@@ -1146,8 +763,8 @@ function sendResultsToEmail() {
 
             <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 0 0 10px 10px; border-top: 2px solid #f59e0b;">
                 <p style="margin: 0; color: #78350f; text-align: center; font-size: 13px;">
-                    💡 <strong>\${currentLang === 'ar' ? 'ملاحظة:' : 'Note:'}</strong> 
-                    \${currentLang === 'ar' 
+                    💡 <strong>${currentLang === 'ar' ? 'ملاحظة:' : 'Note:'}</strong> 
+                    ${currentLang === 'ar' 
                         ? 'تم إرسال هذا التقرير تلقائياً من منصة 4U التعليمية | Mr. Mohammed Hesham' 
                         : 'This report was automatically sent from 4U Educational Platform | Mr. Mohammed Hesham'}
                 </p>
